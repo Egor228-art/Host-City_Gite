@@ -4660,11 +4660,5 @@ def find_restaurant_by_any_means(place_id):
 
 if __name__ == '__main__':
     with app.app_context():
-        # Инициализация базы данных
         db.create_all()
-
-        # Другие инициализации
-        migrate_categories_to_english()
-        check_review_table_structure()
-
-    app.run(debug=True)
+    app.run()

@@ -1,0 +1,44 @@
+# Виртуальное окружение
+.venv1/
+.venv/
+venv/
+env/
+
+# Файлы Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# База данных
+instance/
+*.db
+*.sqlite3
+
+# Файлы IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Файлы Flask
+flask_session/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Загруженные меню
+static/menus/*.pdf
+
+# Временные файлы
+tmp/
+temp/
+*.log
+
+# Файлы конфигурации
+.env
+.env.local
