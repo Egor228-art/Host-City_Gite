@@ -17,14 +17,19 @@ from flask_migrate import Migrate
 from functools import wraps
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db_path = os.environ.get('DATABASE_PATH', '/data/database.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MOSCOW_TZ = pytz.timezone('Europe/Moscow')
 
-app.config['UPLOAD_FOLDER'] = 'static/menus'
+UPLOAD_FOLDER = '/data/uploads'
+MENU_FOLDER = '/data/menus'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(MENU_FOLDER, exist_ok=True)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['ALLOWED_EXTENSIONS'] = {'pdf'}
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
-os.makedirs('static/menus', exist_ok=True)
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
