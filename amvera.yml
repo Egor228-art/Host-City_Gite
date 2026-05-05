@@ -1,2 +1,13 @@
-name: cityguide
-tariffId: "4"
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.11
+
+build:
+  requirementsPath: requirements.txt
+
+run:
+  command: gunicorn main:app --bind 0.0.0.0:8080
+  persistenceMount: /data
+  containerPort: 8080
